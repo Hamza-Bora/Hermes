@@ -10,7 +10,7 @@ pip install instabot
 
 #step2;
 
-#bot.py dosyasına girip username ve password kısmına hesabınızı yazmak.
+#bot.py dosyasına girip username ve password kısmına hesabınızı yazın. hermes.py deki chromedriver yolunu yazın ve bot.py ve hermes.py nin bulunduğu dizini bot.py dosyasının içine gerekli yere yazın.
 
 #step3;
 
