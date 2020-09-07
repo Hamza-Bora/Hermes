@@ -101,15 +101,15 @@ while True:
 
 	try:
 
-	photo = driver.find_element_by_xpath('/html/body/div['+xpath+']/div/div/div[2]/div/div/div[1]/div[1]/a/img').get_attribute("src") #link of profile photo
-	print('\033[31m'+photo+'\033[0m')
+		photo = driver.find_element_by_xpath('/html/body/div['+xpath+']/div/div/div[2]/div/div/div[1]/div[1]/a/img').get_attribute("src") #link of profile photo
+		print('\033[31m'+photo+'\033[0m')
 
-	if photo == photo_yedek:
-		print("FARKLI KISI BEKLENIYOR..")
-		time.sleep(6)  #time.sleep() / for not ban !
-		x_change = False
-		driver.refresh() #refresh because for new viewers
-		continue
+		if photo == photo_yedek:
+			print("FARKLI KISI BEKLENIYOR..")
+			time.sleep(6)  #time.sleep() / for not ban !
+			x_change = False
+			driver.refresh() #refresh because for new viewers
+			continue
 
 
 	except Exception as e:
