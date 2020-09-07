@@ -35,7 +35,7 @@ print(7*"\t"+'\033[7m'+"@Hamza_Bora"+'\033[0m')
 
 
 
-#stack overflow 'dan aldığım kod bloğu //yoksa kod hata veriyordu.
+#from stack overflow 
 chrome_options = Options()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
@@ -68,13 +68,12 @@ login_button.click()
 #time.sleep(4)
 print("Connected.")
 
-#Bildirim sekmesini geçmek için;
+#For notification tab pass
 next1 = driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]') 
 next1.click()
-print("Notification tab passed.") #Bildirim sekmesi geçildi.
+print("Notification tab passed.")
 
-#Kendi bot hesabının profiline girme;
-
+#for enter the your account page
 driver.get('https://www.instagram.com/'+username1)
 
 #Storys click;
@@ -84,46 +83,46 @@ story_button.click()
 
 
 timer = 1
-xpath = "4" # Bu xpath değeri ilk storye girdiğinde 4 sonrasında 3 oluyor o yüzden böyle bir değişkene ihtiyaç duydum.
-x_change = True #xpath değerini değiştirmem için gerekli olan boolean değişkeni
+xpath = "4" # for changing xpath value(first 4, after 3)
+x_change = True #boolen variable for changing xpath value
 photo_yedek = ""
 
 while True:
+	
+	dorulama = True
+	print("while", timer)
 
-  dorulama = True
-  print("while", timer)
+	if x_change != True:
+		xpath = "3"
+	
+	#viewer's photo;
+	viewer_button = driver.find_element_by_xpath('//*[@id="react-root"]/section/div/div/section/div[2]/div[3]/div[2]/button/div/div')
+	viewer_button.click()
 
-  if x_change != True:
-        xpath = "3"
+	try:
 
-  #viewer's photo;
-  viewer_button = driver.find_element_by_xpath('//*[@id="react-root"]/section/div/div/section/div[2]/div[3]/div[2]/button/div/div')
-  viewer_button.click()
+	photo = driver.find_element_by_xpath('/html/body/div['+xpath+']/div/div/div[2]/div/div/div[1]/div[1]/a/img').get_attribute("src") #link of profile photo
+	print('\033[31m'+photo+'\033[0m')
 
-  try:
+	if photo == photo_yedek:
+		print("FARKLI KISI BEKLENIYOR..")
+		time.sleep(6)  #time.sleep() / for not ban !
+		x_change = False
+		driver.refresh() #refresh because for new viewers
+		continue
 
-    photo = driver.find_element_by_xpath('/html/body/div['+xpath+']/div/div/div[2]/div/div/div[1]/div[1]/a/img').get_attribute("src") #profil fotorafın linki
-    print('\033[31m'+photo+'\033[0m') #linki ekrana bastırmayı tercih ettim
 
-    if photo == photo_yedek:
-          print("FARKLI KISI BEKLENIYOR..")
-          time.sleep(6)  #time.sleep() 'e almazsanız kısa süre sonra instagram driverı engelliyor.
-	  x_change = False
-          driver.refresh() #yeniledik çünkü storye yeni giren kullanıcıları kaçırmayalım
-          continue
-    
+	except Exception as e:
+		print("Error the airse")
+		dorulama = False
+		print(dorulama)
 
-  except Exception as e:
-    print("airse hatası")
-    dorulama = False
-    print(dorulama)
+	if dorulama == True:
+		urllib.request.urlretrieve(photo, "image"+str(timer)+".png")
+		print("İmage Download. image number", timer)
+		os.system(f"./bot.py {timer}")
+		timer+=1
 
-  if dorulama == True:
-        urllib.request.urlretrieve(photo, "resim"+str(timer)+".png")
-        print("İmage Download. image number", timer)
-        os.system(f"./bot.py {timer}") #upload için scripti çalıştırma komutu timer değişleni ise resim.png dosyasının kaçıncı resim olacağını belirtiyor meslea(resim5.png)
-        timer+=1
-
-  photo_yedek = photo #eski photo değişkenine ihtiyacımız var çünkü önceki ile aynı olursa birden fazla aynı fotografı basabilir
-  driver.refresh()
-  x_change = False
+	photo_yedek = photo #for not to share the same photo
+	driver.refresh()
+	x_change = False
