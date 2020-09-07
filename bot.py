@@ -10,4 +10,4 @@ bot.login(username = "yourusername", password = "yourpassword")
 
 bot.upload_photo("/home/user/Hermes/resim"+str(timer)+".png", caption = "Katiliminiz icin tesekkur ederiz. Hamza'nin selami var..")
 
-                    # buraya bu dosyanın yolunu |                        | burayada upload edilecek fotografın aciklamasi|
+                    # directory of the file        |                        | Description of the photo to upload  |
