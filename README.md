@@ -1,18 +1,15 @@
-#Programın amacı : İnstagram hikayenize bakan kişilerin profillerini upload etmek (Selenium ile yaptım malum instagram web bazen hata veriyo. Seleniumu da neden kullandım bilmiyorum ama neyse artık büyük ölçüde iş görüyor.)
+#This script shares the profile picture of accounts looking at your instagram stories
 
-#instagrama fotoları upload etmek için başka birinin yazdığı yazılımdan yardım aldım. İlk önce profillerini indiriyordum. Sonra bu adamın yaptığı program upload ediyordu.
+# instabot lib => (https://www.geeksforgeeks.org/post-a-picture-automatically-on-instagram-using-python/)
 
-#Bu scripti bulduğum website = (https://www.geeksforgeeks.org/post-a-picture-automatically-on-instagram-using-python/)
-
-#step1;
+the requirements: chromedriver
 
 pip install instabot
 
-#step2;
+# Enter the bot.py file and type information in the username and password section.
 
-#bot.py dosyasına girip username ve password kısmına hesabınızı yazın. hermes.py deki chromedriver yolunu yazın ve bot.py ve hermes.py nin bulunduğu dizini bot.py dosyasının içine gerekli yere yazın.
-
-#step3;
+#Write chromedriver path in hermes.py.
+#Write bot.py and hermes.py directory in bot.py file.
 
 chmod +x hermes.py && chmod +x bot.py
 
